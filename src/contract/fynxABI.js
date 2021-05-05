@@ -1,4 +1,4 @@
-export const FYNIX_ADDRESS = "0x6B3360Ad8A93Aa909542eA84A494b372018Dcef5"
+export const FYNIX_ADDRESS = "0x3E787ECA9dC6083f407eA704cf541721AA4B9742"
 export const FYNIX_ABI = [
 	{
 		"constant": false,
