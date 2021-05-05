@@ -113,14 +113,14 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
           <div> </div>
         ) : (
           <>
-      <p> 1ETH = 200,000 FYNX</p>  
-     <h6> GHC = {(web3.utils.fromWei(weiValue, "wei")/5000000000000)} </h6>  
+      {/* <p> 1ETH = 200,000 FYNX</p>  
+     <h6> GHC = {(web3.utils.fromWei(weiValue, "wei")/5000000000000)} </h6>   */}
           </>
         )}
         <br />
         <TextField
           id="outlined-basic"
-          label="Enter Ether"
+          label="Enter BNB"
           variant="outlined"
           value={etherValue}
           onChange={(e) => setEtherValue(e.target.value)}

@@ -138,7 +138,7 @@ const Footer = ({ t }) => {
                   src="https://img.icons8.com/android/24/000000/linkedin.png"
                 />
                 <SocialLink
-                  href="https://t.me/fynxfornft"
+                  // href="https://t.me/fynxfornft"
                   src="https://img.icons8.com/ios-filled/50/000000/telegram-app.png"
                 />
                 <SocialLink

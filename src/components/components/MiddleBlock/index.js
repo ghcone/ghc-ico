@@ -5,6 +5,7 @@ import Fade from "react-reveal/Fade";
 import image1 from '../../images/miori75 2.jpg';
 import image2 from '../../images/miori75 3.png'
 import image3 from '../../images/miori75.jpg'
+import sectionImage from '../../images/ghc-section.png'
 import * as S from "./styles";
 import './style.modules.css';
 
@@ -38,13 +39,13 @@ const MiddleBlock = ({ title, content, button, t }) => {
                 //                   </a>
                 <div style={{display:'flex'}}>
                 <img
-                  src={image1}
+                  src={sectionImage}
                   className="about-block-image"
-                  width="33%"
+                  width="100%"
                   height="200px"
                   className="middle-image1"
                 />
-                     <img
+                     {/* <img
                   src={image2}
                   className="about-block-image"
                   width="33%"
@@ -59,7 +60,7 @@ const MiddleBlock = ({ title, content, button, t }) => {
                   height="200px"
                   className="middle-image3"
 
-                />
+                /> */}
                 </div>
 
               ) : (

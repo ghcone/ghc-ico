@@ -52,11 +52,10 @@ const Header = ({t}) => {
           <S.Span>
             {" "}
             <a
-              href=" https://etherscan.io/token/0x8da2ce54aa9130d9183cde988c7e718612e583e7#balances
-"
+              href="https://ghc.one/"
               target="_blank"
             >
-              {t("Etherscan")}
+              {t("About")}
             </a>
           </S.Span>
         </S.CustomNavLinkSmall>

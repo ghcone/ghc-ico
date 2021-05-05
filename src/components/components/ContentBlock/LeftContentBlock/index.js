@@ -4,6 +4,7 @@ import Slide from "react-reveal/Slide";
 
 import SvgIcon from "../../../common/SvgIcon";
 import AMX from '../RightContentBlock/AMX.jpg'
+import sectionTwo from '../../../images/ghc-section2.png'
 
 import * as S from "./styles";
 
@@ -14,7 +15,7 @@ const LeftContentBlock = ({ icon, title, content, section, t, id }) => {
         <Col lg={11} md={11} sm={12} xs={24}>
           <Slide left>
             <img
-              src={AMX}
+              src={sectionTwo}
               className="about-block-image"
               width="100%"
               height="100%"
