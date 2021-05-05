@@ -111,7 +111,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
         ) : (
           <>
       <p> 1ETH = 200,000 FYNX</p>  
-     <h6> FYNX = {(web3.utils.fromWei(weiValue, "wei")/5000000000000)} </h6>  
+     <h6> GHC = {(web3.utils.fromWei(weiValue, "wei")/5000000000000)} </h6>  
           </>
         )}
         <br />
@@ -139,7 +139,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
                   style={{marginTop: '20px'}}
                 >
                   {/* {t(item.title)} */}
-                  BUY FYNX
+                  BUY GHC
                 </Button>
               {/* );
             })}
@@ -158,7 +158,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
               <h6>{t(title)}</h6>
               <S.Content>{t(content)}</S.Content>
 
-              <Button onClick={handleOpen}>BUY FYNX</Button>
+              <Button onClick={handleOpen}>BUY GHC</Button>
           
               <Modal
                 open={open}
