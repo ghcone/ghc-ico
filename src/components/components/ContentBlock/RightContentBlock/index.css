@@ -1,0 +1,13 @@
+.sectionOne-main{
+    background-image: url("https://ghc.one/wp-content/themes/mystic/resources/images/slider/mystic.jpg");
+    height: 1000px;
+    /* width: 100%; */
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-size: cover;
+    background-color: #010101;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+}

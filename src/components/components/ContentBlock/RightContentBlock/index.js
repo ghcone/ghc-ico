@@ -16,6 +16,9 @@ import "../../../../css/modal.modules.css";
 import image1 from '../../../images/miori75 2.jpg';
 import image2 from '../../../images/miori75 3.png'
 import image3 from '../../../images/miori75.jpg'
+import './index.css'
+import logo from "../../../images/logo1.png";
+
 
 
 function getModalStyle() {
@@ -150,6 +153,8 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
   console.log("this is for value", etherValue);
 
   return (
+    <div className="secionOne-container" >
+
     <S.RightBlockContainer>
       <Row type="flex" justify="space-between" align="middle" id={id}>
         <Col lg={11} md={11} sm={11} xs={24}>
@@ -193,7 +198,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
               height="200px"
             />
             </div> */}
-                <img src={AMX}       className="about-block-image"
+                <img src={logo}       className="about-block-image"
               width="70%"
               height="70%"
               // style={{marginLeft:"20px"}}
@@ -202,6 +207,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
         </Col>
       </Row>
     </S.RightBlockContainer>
+    </div>
   );
 };
 

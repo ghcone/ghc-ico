@@ -3,7 +3,8 @@ import { Row, Col } from "antd";
 import i18n from "i18next";
 import { withTranslation } from "react-i18next";
 import Fade from "react-reveal/Fade";
-import logo from '../Header/512.png';
+// import logo from '../Header/512.png';
+import logo from "../../images/logo1.png";
 
 import * as S from "./styles";
 
