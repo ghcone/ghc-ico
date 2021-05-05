@@ -1,0 +1,16 @@
+{
+  "title": "Light, Fast & Responsive",
+  "text": "t is a long  a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. V",
+  "section": [
+    {
+      "title": "Why FYNX?",
+      "content": "d web page editoxt,m' will uncover many web sites still in their infancy. V",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "Why FYNX?",
+      "content": "Styled Components gives you total control over your components.",
+      "icon": "notes.svg"
+    }
+  ]
+}

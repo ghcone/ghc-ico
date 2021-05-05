@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { GlobalProvider } from "./context/GlobalState";
+import { EthAccountInfo } from "./components/EthAccountInfo";
+import { I18nextProvider } from "react-i18next";
+import "antd/dist/antd.css";
+import { BrowserRouter } from "react-router-dom";
 
+
+import Router from "./components/router/";
+import i18n from "./components/translation";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <GlobalProvider>
+
+    <div >
+    <BrowserRouter>
+    <I18nextProvider i18n={i18n}>
+      <Router />
+    </I18nextProvider>
+  </BrowserRouter>
     </div>
+    {/* <EthAccountInfo /> */}
+
+    </GlobalProvider>
+    </>
+
   );
 }
 
