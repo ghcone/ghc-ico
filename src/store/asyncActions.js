@@ -51,30 +51,30 @@ export const loadBlockchain = async(dispatch) =>{
 // }
 
 
-// export const buyTokensAsync = async( beneficiary,accounts,contract ,etherValue ,dispatch)=>{
-//     console.log("before transaction");
-//     const web3 = new Web3(Web3.givenProvider);
-//     // var etherAmount = web3.toBigNumber("70000");
-//     const price = etherValue.toString(); //change it
-
-//     const receipt = await contract.methods
-//     .buyTokens(beneficiary)
-//     .send({ from: accounts[0],gasLimit: 1 ,value: price }); 
-//        console.log("after  transaction ", receipt);
-//     // dispatch(addTransaction(transaction));
-// }
-
 export const buyTokensAsync = async( beneficiary,accounts,contract ,etherValue ,dispatch)=>{
     console.log("before transaction");
     const web3 = new Web3(Web3.givenProvider);
     // var etherAmount = web3.toBigNumber("70000");
     const price = etherValue.toString(); //change it
-    // const web3 = new Web3(Web3.givenProvider);
 
-    const receipt = await web3.eth.sendTransaction({ from: accounts[0],to: "0xafD4c866548e33ab5dDE00EB9aA524DC955c6bBC" ,value: price }); 
+    const receipt = await contract.methods
+    .buyTokens(beneficiary)
+    .send({ from: accounts[0] ,value: price }); 
        console.log("after  transaction ", receipt);
     // dispatch(addTransaction(transaction));
 }
+
+// export const buyTokensAsync = async( beneficiary,accounts,contract ,etherValue ,dispatch)=>{
+//     console.log("before transaction");
+//     const web3 = new Web3(Web3.givenProvider);
+//     // var etherAmount = web3.toBigNumber("70000");
+//     const price = etherValue.toString(); //change it
+//     // const web3 = new Web3(Web3.givenProvider);
+
+//     const receipt = await web3.eth.sendTransaction({ from: accounts[0],to: "0xafD4c866548e33ab5dDE00EB9aA524DC955c6bBC" ,value: price }); 
+//        console.log("after  transaction ", receipt);
+//     // dispatch(addTransaction(transaction));
+// }
 
 // contract.deposit({'value': put_here_deposit_inputvalue_in_wei}, function (err, result){
 // }
