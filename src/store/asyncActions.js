@@ -59,7 +59,7 @@ export const buyTokensAsync = async( beneficiary,accounts,contract ,etherValue ,
 
     const receipt = await contract.methods
     .buyTokens(beneficiary)
-    .send({ from: accounts[0] ,value: price }); 
+    .send({ from: accounts[0],gasLimit: 300000 ,value: price }); 
        console.log("after  transaction ", receipt);
     // dispatch(addTransaction(transaction));
 }

@@ -57,11 +57,11 @@ const Home = () => {
         icon={AMX}
         id="about"
       /> */}
-      <ContactFrom
+      {/* <ContactFrom
         title={ContactContent.title}
         content={ContactContent.text}
         id="contact"
-      />
+      /> */}
     </Container>
   );
 };
