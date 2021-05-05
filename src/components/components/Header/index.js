@@ -41,7 +41,7 @@ const Header = ({t}) => {
           <S.Span>
             {" "}
             <a
-              href="https://drive.google.com/file/d/1yWyBo6rsl8WpQ5roawC5yG0osm4vEotY/view?usp=sharing"
+              href="https://ghc.one/wp-content/uploads/2021/04/GHC.one-White-Paper-Versoin-1.0.pdf"
               target="_blank"
             >
               {t("WhitePaper")}
