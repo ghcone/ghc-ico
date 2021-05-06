@@ -13,7 +13,7 @@ import AMX from "./AMX.png";
 import AMXJPEG from "./AMX.jpg";
 import TextField from "@material-ui/core/TextField";
 import "../../../../css/modal.modules.css";
-
+import Timer from '../../Timer/Timer'
 import './index.css'
 import logo from "../../../images/logo1.png";
 
@@ -162,7 +162,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
               <S.Content>{t(content)}</S.Content>
 
               <Button onClick={handleOpen}>BUY GHC</Button>
-          
+
               <Modal
                 open={open}
                 onClose={handleClose}
@@ -205,6 +205,9 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
         </Col>
       </Row>
     </S.RightBlockContainer>
+    <h3 className="timer-flex">Time Left</h3>
+    <Timer/>
+
     </div>
   );
 };

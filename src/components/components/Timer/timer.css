@@ -1,0 +1,144 @@
+/* .display-timer{
+   
+} */
+.timer-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;    
+    margin-bottom: 40px;
+    margin-top: 40px;
+    color: #4f4f50de;
+
+}
+.timer-flex div{
+    margin-right: 10px;
+}
+.timer-flex div span{
+    display: block;
+    width: 110px;
+    color: #4f4f50de;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.timer-text{
+    font-weight: 400;
+    height: 30px;
+    font-size: 19px;
+    color: grey;
+    font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+
+
+}
+.timer-num{
+    height: 80px;
+    font-size: 35px;
+    color: #545253;
+    font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+     margin-bottom: -22px;
+     /* font-weight: ; */
+}
+
+.heading-div p{
+    display: flex;
+    margin-top: 24px;
+    margin-right: 40px;
+    letter-spacing: 1px;
+    color: #545253;
+    margin-bottom: 6px;
+    
+    font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+}
+.heading{
+     font-size: 30px; 
+    font-weight: 550;
+    font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+    margin-bottom: 100px;
+    
+}
+.timertext-top{
+    font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+    font-size: 18px;
+}   
+
+.btn-div{
+    text-align: center;
+}
+
+.btn-div button{
+    width: 105px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    margin-right: 10px;
+    background-color: #ffbd69;
+    color: white;
+}
+
+
+.timer{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: left;
+    font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+    color : #545253;
+    margin-bottom: -20px;
+}
+
+
+.b1{
+    color:rgb(49, 47, 47);
+     font-size: 18px ; 
+     font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+     font-weight: bold; 
+     margin-left: 5px;
+     margin-right: 5px;
+
+    }
+
+    .b2{
+        color:rgb(49, 47, 47);
+        font-size: 19px ; 
+        font-weight: bold; 
+        font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+        margin-left: 5px;
+        margin-right: 5px;
+       }
+
+
+
+      .backArrow{
+          margin-left: 10%;
+          color: #27ade6;
+      }
+
+
+       @media screen and (max-width: 600px) {
+        .text-container {
+          display: inline-flexbox;
+        
+        
+        }
+
+        .b2{
+            color:rgb(49, 47, 47);
+            font-size: 19px ; 
+            font-weight: bold; 
+            font-family: 'Helvetica Neu', Helvetica, 'Segoe UI', Arial , sans-serif ;
+            margin-left: 5px;
+            margin-right: 5px;
+           }
+           .b1{
+            color:rgb(49, 47, 47);
+             font-size: 18px ; 
+             font-weight: bold; 
+             margin-left: 5px;
+             margin-right: 5px;
+            }
+            .heading-div p{
+                display: block;
+            }
+      }
+      

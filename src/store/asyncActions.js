@@ -24,7 +24,7 @@ export const loadBlockchain = async (dispatch) => {
             console.log("contract = ", tokencontract);
             console.log("contract.methods = ", contract.methods);
 
-
+            tokenLeftAsync(tokencontract)
         }
         else {
             dispatch(web3LoadingError("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!"))
@@ -50,3 +50,12 @@ export const buyTokensAsync = async (beneficiary, accounts, contract, etherValue
     console.log("after  transaction ", receipt);
 }
 
+export const tokenLeftAsync = async (contract) => {
+    // var etherAmount = web3.toBigNumber("70000");
+    const receipt = await contract.methods
+        .weiRaised().call();
+    console.log("after weiRaisedAsync  transaction ", receipt );
+    // dispatch(addTransaction(transaction));
+    return receipt
+
+}
