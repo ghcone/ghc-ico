@@ -13,9 +13,7 @@ import AMX from "./AMX.png";
 import AMXJPEG from "./AMX.jpg";
 import TextField from "@material-ui/core/TextField";
 import "../../../../css/modal.modules.css";
-import image1 from '../../../images/miori75 2.jpg';
-import image2 from '../../../images/miori75 3.png'
-import image3 from '../../../images/miori75.jpg'
+
 import './index.css'
 import logo from "../../../images/logo1.png";
 

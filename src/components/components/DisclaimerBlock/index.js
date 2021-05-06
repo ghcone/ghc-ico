@@ -2,9 +2,7 @@ import { lazy } from "react";
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import Fade from "react-reveal/Fade";
-import image1 from '../../images/miori75 2.jpg';
-import image2 from '../../images/miori75 3.png'
-import image3 from '../../images/miori75.jpg'
+
 import sectionImage from '../../images/ghc-section.png'
 import * as S from "./styles";
 import './style.modules.css';
