@@ -1,0 +1,16 @@
+.middle-image1{
+margin-right: 10px;
+}
+.middle-image3{
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .middle-image1{
+        margin-right: 5px;
+        }
+        .middle-image3{
+            margin-left: 5px ;
+        }
+        
+  }

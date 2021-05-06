@@ -13,8 +13,11 @@ import AMX from '../../components/ContentBlock/RightContentBlock/AMX.png'
 const ContactFrom = lazy(() => import("../../components/ContactForm"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
+const DisclaimerBlock = lazy(() => import("../../components/DisclaimerBlock"));
+
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
+
 
 const Home = () => {
   return (
@@ -51,10 +54,10 @@ const Home = () => {
         icon="waving.svg"
         id="product"
       />
-        <MiddleBlock
-        title={MiddleBlockContent.title}
-        content={MiddleBlockContent.text}
-        button={MiddleBlockContent.button}
+        <DisclaimerBlock
+        title={DisclaimerBlockContent.title}
+        content={DisclaimerBlockContent.text}
+        button={DisclaimerBlockContent.button}
       /> 
           {/* <ContentBlock
         type="right"
