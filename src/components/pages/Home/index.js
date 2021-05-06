@@ -3,6 +3,8 @@ import { lazy } from "react";
 import IntroContent from "../../content/IntroContent.json";
 import MiddleBlockContent from "../../content/MiddleBlockContent.json";
 import AboutContent from "../../content/AboutContent.json";
+import DisclaimerBlockContent from "../../content/DisclaimerBlockContent.json";
+
 import MissionContent from "../../content/MissionContent.json";
 import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
@@ -49,6 +51,11 @@ const Home = () => {
         icon="waving.svg"
         id="product"
       />
+        <MiddleBlock
+        title={MiddleBlockContent.title}
+        content={MiddleBlockContent.text}
+        button={MiddleBlockContent.button}
+      /> 
           {/* <ContentBlock
         type="right"
         title={AboutContent.title}

@@ -120,7 +120,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
         <br />
         <TextField
           id="outlined-basic"
-          label="Enter BNB"
+          label="Enter ETH"
           variant="outlined"
           value={etherValue}
           onChange={(e) => setEtherValue(e.target.value)}
