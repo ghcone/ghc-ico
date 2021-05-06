@@ -1,5 +1,5 @@
-export const FYNIX_ADDRESS = "0xcC5bD15459eFA1123becb2C34412Ac9852D81658"
-export const FYNIX_ABI = [
+export const GHC_ADDRESS = "0xcC5bD15459eFA1123becb2C34412Ac9852D81658"
+export const GHC_ABI = [
 	{
 		"constant": false,
 		"inputs": [],
