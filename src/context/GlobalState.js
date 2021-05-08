@@ -20,9 +20,9 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
-    useEffect(()=> {
-        loadBlockchain(dispatch);
-    },[])
+    // useEffect(()=> {
+    //     loadBlockchain(dispatch);
+    // },[])
 
     return (<GlobalContext.Provider value={[state,dispatch]}>
                 {children}

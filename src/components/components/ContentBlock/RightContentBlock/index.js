@@ -2,10 +2,10 @@ import {Row, Col} from "antd";
 import {withTranslation} from "react-i18next";
 import Slide from "react-reveal/Slide";
 import {useStore} from "../../../../context/GlobalState";
-import React,{useEffect} from "react";
+import React, { useState, useEffect, Fragment, useCallback } from "react";
 import SvgIcon from "../../../common/SvgIcon";
 import Button from "../../../common/Button";
-import {buyTokensAsync} from "../../../../store/asyncActions";
+import {buyTokensAsync,loadBlockchain} from "../../../../store/asyncActions";
 import * as S from "./styles";
 import {makeStyles} from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -71,7 +71,9 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
    
   },[etherValue])
 
-
+  const sendRequest = useCallback(async () => {
+    loadBlockchain(dispatch);
+  }, []);
   const onSubmit = async () => {
     // e.preventDefault();
     // setAuction(formData)
@@ -160,8 +162,14 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
             <S.ContentWrapper>
               <h6>{t(title)}</h6>
               <S.Content>{t(content)}</S.Content>
+              {
+                web3 == null ?
+                <Button onClick={sendRequest}>Unlock Wallet</Button>
+                :
+                <Button onClick={handleOpen}>BUY GHC</Button>
 
-              <Button onClick={handleOpen}>BUY GHC</Button>
+              }
+
 
               <Modal
                 open={open}
