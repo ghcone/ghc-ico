@@ -2,7 +2,7 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import Slide from "react-reveal/Slide";
 import { useStore } from "../../../../context/GlobalState";
-import React, { useState, useEffect, Fragment, useCallback } from "react";
+import React, { useState, useEffect, Fragment, useCallback,useRef } from "react";
 import SvgIcon from "../../../common/SvgIcon";
 import Button from "../../../common/Button";
 import { buyTokensAsync, loadBlockchain } from "../../../../store/asyncActions";
@@ -16,6 +16,7 @@ import "../../../../css/modal.modules.css";
 import Timer from '../../Timer/Timer'
 import './index.css'
 import logo from "../../../images/logo1.png";
+import Web3 from "web3";
 
 
 
@@ -57,34 +58,33 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const [open, setOpen] = React.useState(false);
   const [etherValue, setEtherValue] = React.useState("0");
   const [weiValue, setWeiValue] = React.useState("");
+  const [roundRate, setRoundRate] = useState("")
+  const [roundStop, setRoundStop] = useState(0);
+
+  //for time
+  const [timerDays, setTimerDays] = useState("00");
+  const [timerHours, setTimerHours] = useState("00");
+  const [timerMinutes, setTimerMinutes] = useState("00");
+  const [timerSeconds, setTimerSeconds] = useState("00");
+
+
   useEffect(() => {
     if (round != null) {
-      setRoundData({
-        duration: round.duration,
-        maxContibution: round.maxContibution,
-        minContibution: round.minContibution,
-        rate: round.rate,
-        roundCap: round.roundCap,
-        startTime: round.startTime,
-        stopTime: round.stopTime
-
-      })
+      setRoundRate(round.rate)
+      setRoundStop(round.stopTime*1000)
     }
-
-
   }, [round])
-  console.log("this for roundround", roundData)
+
+  
 
   useEffect(() => {
     if (etherValue >= 10e20) {
-
       alert("big Number")
-
     }
-
     else if (etherValue < 10e19) {
       let etherToWei = etherValue * 10e17;
-      let stringEtherToWei = etherToWei.toString();
+
+      let stringEtherToWei = ((roundRate / 10 ** 10) * etherToWei).toString();
       setWeiValue(stringEtherToWei);
     }
 
@@ -93,26 +93,15 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
   }, []);
+  console.log("this weiValueweiValue", weiValue)
   const onSubmit = async () => {
-    // e.preventDefault();
-    // setAuction(formData)
-    // console.log("thi is auction auciton", formData);
-    // setTransactionSuccessful(true);
-    // setTransactionError("");
+
     let etherToWei = etherValue * 10e17;
     let stringEtherToWei = etherToWei.toString();
     try {
-      // setTransactionInprocess(true)
-      // console.log("This is form data from dispatch async", auction);
       await buyTokensAsync(account, accounts, contract, stringEtherToWei, dispatch);
-
-      // setTransactionInprocess(false);
-      // setTransactionSuccessful(true);
     } catch (error) {
       console.log("error trax = ", error);
-      // setTransactionInprocess(false);
-      // setTransactionSuccessful(false);
-      // setTransactionError(error.message);
     }
   };
   const handleOpen = () => {
@@ -122,6 +111,48 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+
+
+  let interval = useRef();
+
+
+
+  const startTimer = () => {
+
+    if (round != null) {
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = roundStop - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        clearInterval(interval.current);
+      } else {
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    }, 1000);
+  }
+  };
+
+  useEffect(() => {
+    
+    startTimer();
+    return () => {
+      clearInterval(interval.current);
+    };
+  });
+
   console.log("this is web3", web3);
   const body = (
     <div style={modalStyle} className={classes.paper}>
@@ -203,26 +234,6 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           </Col>
           <Col lg={11} md={11} sm={12} xs={24}>
             <Slide right>
-              {/* <div style={{display:'flex'}}>
-            <img
-              src={image1}
-              className="about-block-image"
-              width="33%"
-              height="200px"
-            />
-                 <img
-              src={image2}
-              className="about-block-image"
-              width="33%"
-              height="200px"
-            />
-                 <img
-              src={image3}
-              className="about-block-image"
-              width="33%"
-              height="200px"
-            />
-            </div> */}
               <img src={logo} className="about-block-image"
                 width="70%"
                 height="70%"
@@ -233,7 +244,41 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
         </Row>
       </S.RightBlockContainer>
       <h3 className="timer-flex" style={{ marginBottom: "-50px" }}>Time Left</h3>
-      <Timer />
+      <>
+      <div className="display-timer">
+        <div className="timer-flex">
+          <div className="d-two">
+            <span className="timer-num one">
+              <b>{timerDays} </b>
+            </span>
+            <span className="timer-text one1">days</span>
+          </div>
+          <div className="">
+            <span className="timer-num ">
+              {" "}
+              <b>{timerHours}</b>
+            </span>
+            <span className="timer-text">hours</span>
+          </div>
+          <div className="">
+            <span className="timer-num two">
+              <b>{timerMinutes}</b>
+            </span>
+            <span className="timer-text two2">minutes</span>
+          </div>
+          <div className="">
+            <span className="timer-num two">
+              {" "}
+              <b>{timerSeconds}</b>
+            </span>
+            <span className="timer-text two2">seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="btn-div"></div>
+      
+    </>
 
     </div>
   );

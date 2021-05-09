@@ -13,6 +13,8 @@ export const loadBlockchain = async (dispatch) => {
             const contract = new web3.eth.Contract(
                 GHC_ABI, GHC_ADDRESS
             );
+            getRoundAsync(contract,dispatch)
+
             const tokencontract = new web3.eth.Contract(
                 GHC_ABI, GHC_ADDRESS
             );
@@ -25,7 +27,6 @@ export const loadBlockchain = async (dispatch) => {
             console.log("contract.methods = ", contract.methods);
 
             tokenLeftAsync(tokencontract)
-            getRoundAsync(contract,dispatch)
         }
         else {
             dispatch(web3LoadingError("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!"))
