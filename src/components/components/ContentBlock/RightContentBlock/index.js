@@ -1,13 +1,13 @@
-import {Row, Col} from "antd";
-import {withTranslation} from "react-i18next";
+import { Row, Col } from "antd";
+import { withTranslation } from "react-i18next";
 import Slide from "react-reveal/Slide";
-import {useStore} from "../../../../context/GlobalState";
+import { useStore } from "../../../../context/GlobalState";
 import React, { useState, useEffect, Fragment, useCallback } from "react";
 import SvgIcon from "../../../common/SvgIcon";
 import Button from "../../../common/Button";
-import {buyTokensAsync,loadBlockchain} from "../../../../store/asyncActions";
+import { buyTokensAsync, loadBlockchain } from "../../../../store/asyncActions";
 import * as S from "./styles";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles, duration } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import AMX from "./AMX.png";
 import AMXJPEG from "./AMX.jpg";
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RightBlock = ({title, content, button, icon, t, id}) => {
+const RightBlock = ({ title, content, button, icon, t, id }) => {
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     element.scrollIntoView({
@@ -48,29 +48,47 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
     });
   };
 
-  const [{web3, contract, accounts,round}, dispatch] = useStore();
+  const [{ web3, contract, accounts, round }, dispatch] = useStore();
   const account = accounts[0];
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
+  const [roundData, setRoundData] = useState()
   const [open, setOpen] = React.useState(false);
   const [etherValue, setEtherValue] = React.useState("0");
-  const [weiValue,setWeiValue] = React.useState("");
-  console.log("this for roundround",round)
-  useEffect(()=> {
-    if(etherValue >= 10e20) {
-    
-      alert("big Number")
-     
+  const [weiValue, setWeiValue] = React.useState("");
+  useEffect(() => {
+    if (round != null) {
+      setRoundData({
+        duration: round.duration,
+        maxContibution: round.maxContibution,
+        minContibution: round.minContibution,
+        rate: round.rate,
+        roundCap: round.roundCap,
+        startTime: round.startTime,
+        stopTime: round.stopTime
+
+      })
     }
 
-    else if(etherValue < 10e19){
+
+  }, [round])
+  console.log("this for roundround", roundData)
+
+  useEffect(() => {
+    if (etherValue >= 10e20) {
+
+      alert("big Number")
+
+    }
+
+    else if (etherValue < 10e19) {
       let etherToWei = etherValue * 10e17;
       let stringEtherToWei = etherToWei.toString();
       setWeiValue(stringEtherToWei);
     }
-   
-  },[etherValue])
+
+  }, [etherValue])
 
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
@@ -107,17 +125,17 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
   console.log("this is web3", web3);
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <div style={{textAlign:'center'}}>
+      <div style={{ textAlign: 'center' }}>
         {/* <h2 id="simple-modal-title">Buy Fynx Token</h2> */}
         <br />
         {web3 == null ? (
           <div> </div>
         ) : (
-          <>
-      {/* <p> 1ETH = 200,000 FYNX</p>  
+            <>
+              {/* <p> 1ETH = 200,000 FYNX</p>  
      <h6> GHC = {(web3.utils.fromWei(weiValue, "wei")/5000000000000)} </h6>   */}
-          </>
-        )}
+            </>
+          )}
         <br />
         <TextField
           id="outlined-basic"
@@ -127,25 +145,25 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
           onChange={(e) => setEtherValue(e.target.value)}
           type="number"
           inputProps={
-            {maxLength: 1}
-        }       />
-        <br/>
+            { maxLength: 1 }
+          } />
+        <br />
         {/* <SimpleModal /> */}
         {/* <S.ButtonWrapper>
           {button &&
             typeof button === "object" &&
             button.map((item, id) => {
               return ( */}
-                <Button
-                  width="true"
-                  // onClick={() => scrollTo("about")}
-                  onClick={onSubmit}
-                  style={{marginTop: '20px'}}
-                >
-                  {/* {t(item.title)} */}
-                  BUY GHC
+        <Button
+          width="true"
+          // onClick={() => scrollTo("about")}
+          onClick={onSubmit}
+          style={{ marginTop: '20px' }}
+        >
+          {/* {t(item.title)} */}
+          BUY GHC
                 </Button>
-              {/* );
+        {/* );
             })}
         </S.ButtonWrapper> */}
       </div>
@@ -156,36 +174,36 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
   return (
     <div className="secionOne-container" >
 
-    <S.RightBlockContainer>
-      <Row type="flex" justify="space-between" align="middle" id={id}>
-        <Col lg={11} md={11} sm={11} xs={24}>
-          <Slide left>
-            <S.ContentWrapper>
-              <h6>{t(title)}</h6>
-              <S.Content>{t(content)}</S.Content>
-              {
-                web3 == null ?
-                <Button onClick={sendRequest}>Unlock Wallet</Button>
-                :
-                <Button onClick={handleOpen}>BUY GHC</Button>
+      <S.RightBlockContainer>
+        <Row type="flex" justify="space-between" align="middle" id={id}>
+          <Col lg={11} md={11} sm={11} xs={24}>
+            <Slide left>
+              <S.ContentWrapper>
+                <h6>{t(title)}</h6>
+                <S.Content>{t(content)}</S.Content>
+                {
+                  web3 == null ?
+                    <Button onClick={sendRequest}>Unlock Wallet</Button>
+                    :
+                    <Button onClick={handleOpen}>BUY GHC</Button>
 
-              }
+                }
 
 
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-              >
-                {body}
-              </Modal>
-            </S.ContentWrapper>
-          </Slide>
-        </Col>
-        <Col lg={11} md={11} sm={12} xs={24}>
-          <Slide right>
-            {/* <div style={{display:'flex'}}>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description"
+                >
+                  {body}
+                </Modal>
+              </S.ContentWrapper>
+            </Slide>
+          </Col>
+          <Col lg={11} md={11} sm={12} xs={24}>
+            <Slide right>
+              {/* <div style={{display:'flex'}}>
             <img
               src={image1}
               className="about-block-image"
@@ -205,17 +223,17 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
               height="200px"
             />
             </div> */}
-                <img src={logo}       className="about-block-image"
-              width="70%"
-              height="70%"
+              <img src={logo} className="about-block-image"
+                width="70%"
+                height="70%"
               // style={{marginLeft:"20px"}}
               />
-          </Slide>
-        </Col>
-      </Row>
-    </S.RightBlockContainer>
-    <h3 className="timer-flex" style={{marginBottom: "-50px"}}>Time Left</h3>
-    <Timer/>
+            </Slide>
+          </Col>
+        </Row>
+      </S.RightBlockContainer>
+      <h3 className="timer-flex" style={{ marginBottom: "-50px" }}>Time Left</h3>
+      <Timer />
 
     </div>
   );
