@@ -37,6 +37,11 @@ export default (state, action) => {
           ...state,
           accounts: action.payload
         }
+        case 'GET_ROUND':
+        return {
+          ...state,
+          round: action.payload
+        }
       case 'WEB3_LOADING_ERROR':
         return {
           ...state,
@@ -47,3 +52,4 @@ export default (state, action) => {
         return state;
     }
   }
+  

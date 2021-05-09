@@ -1,4 +1,4 @@
-import { setupWeb3, setupContract, setupToken, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, getRound, setupContract, setupToken, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
 import { GHC_ADDRESS, GHC_ABI } from '../contract/ghc';
 
@@ -25,6 +25,7 @@ export const loadBlockchain = async (dispatch) => {
             console.log("contract.methods = ", contract.methods);
 
             tokenLeftAsync(tokencontract)
+            getRoundAsync(contract,dispatch)
         }
         else {
             dispatch(web3LoadingError("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!"))
@@ -54,8 +55,21 @@ export const tokenLeftAsync = async (contract) => {
     // var etherAmount = web3.toBigNumber("70000");
     const receipt = await contract.methods
         .weiRaised().call();
-    console.log("after weiRaisedAsync  transaction ", receipt );
+    console.log("after weiRaisedAsync  transaction ", receipt);
     // dispatch(addTransaction(transaction));
     return receipt
+
+}
+
+export const getRoundAsync = async (contract, dispatch) => {
+    // var etherAmount = web3.toBigNumber("70000");
+    const currecntRound = await contract.methods
+        .currentRound().call();
+        const rounds = await contract.methods
+        .rounds(currecntRound).call();
+    console.log("after weiRaisedAsync  Round ", rounds);
+    dispatch(getRound(rounds));
+    // dispatch(addTransaction(transaction));
+    return rounds
 
 }

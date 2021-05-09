@@ -8,6 +8,7 @@ const initialState = {
   web3: null,
   accounts: [],
   contract: null,
+  round: null,
   tokencontract: null,
   web3LoadingErrorMessage:"",
   web3Loadded: false

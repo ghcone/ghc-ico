@@ -39,6 +39,12 @@ export const setupToken = (tokenContract) => {
         payload: tokenContract
     };
 }
+export const getRound = (receipt) => {
+    return {
+        type: 'GET_ROUND',
+        payload: receipt
+    };
+}
 export const addEthereumAccounts = (accounts) => {
     return {
         type: 'ADD_ETHEREUM_ACCOUNTS',

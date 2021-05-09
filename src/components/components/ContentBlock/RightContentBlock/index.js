@@ -48,7 +48,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
     });
   };
 
-  const [{web3, contract, accounts}, dispatch] = useStore();
+  const [{web3, contract, accounts,round}, dispatch] = useStore();
   const account = accounts[0];
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -56,6 +56,7 @@ const RightBlock = ({title, content, button, icon, t, id}) => {
   const [open, setOpen] = React.useState(false);
   const [etherValue, setEtherValue] = React.useState("0");
   const [weiValue,setWeiValue] = React.useState("");
+  console.log("this for roundround",round)
   useEffect(()=> {
     if(etherValue >= 10e20) {
     
