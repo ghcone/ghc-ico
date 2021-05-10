@@ -23,7 +23,7 @@ const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const Home = () => {
   return (
     <Container>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <ContentBlock
         type="right"
         first="true"
@@ -33,13 +33,13 @@ const Home = () => {
         icon="developer.svg"
         id="intro"
       />
-     
-  
-       <MiddleBlock
+
+
+      <MiddleBlock
         title={MiddleBlockContent.title}
         content={MiddleBlockContent.text}
         button={MiddleBlockContent.button}
-      /> 
+      />
       {/* <ContentBlock
         type="right"
         title={MissionContent.title}
@@ -55,17 +55,18 @@ const Home = () => {
         icon="waving.svg"
         id="product"
       />
-         <DisclaimerBlock
+      <RoundDetails
         title={DisclaimerBlockContent.title}
         content={DisclaimerBlockContent.text}
         button={DisclaimerBlockContent.button}
-      /> 
-        <RoundDetails
+      />
+      <DisclaimerBlock
         title={DisclaimerBlockContent.title}
         content={DisclaimerBlockContent.text}
         button={DisclaimerBlockContent.button}
-      /> 
-          {/* <ContentBlock
+      />
+
+      {/* <ContentBlock
         type="right"
         title={AboutContent.title}
         content={AboutContent.text}

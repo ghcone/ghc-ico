@@ -22,7 +22,7 @@ const DisclaimerBlock = ({ title, content, button, t }) => {
         <Fade bottom>
           <S.ContentWrapper>
             <Col lg={24} md={24} sm={24} xs={24}>
-              <h6>{t(title)}</h6>
+              <h6 style={{ color: "#38aea0" }}>{t(title)}</h6>
               <S.Content>{t(content)}</S.Content>
          
         

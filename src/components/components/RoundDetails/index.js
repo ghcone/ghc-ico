@@ -34,20 +34,21 @@ const RoundDetails = ({ title, content, button, t }) => {
             </Col>
           </S.ContentWrapper> */}
           <div>
-            <div>
-              <h6>Raised Amount: {round ? round.roundCap / 10e17 : ""}</h6>
+          <div>
+              <h2 style={{color:"#38aea0",fontSize: "60px"}}> Round {roundNumber ? roundNumber : ""} Details</h2>
               <h6></h6>
             </div>
             <div>
-              <h6>Current Round Number: {roundNumber ? roundNumber : ""}</h6>
+              <h6>Raised: {round ? (round.roundCap / 10e17).toFixed(2) : ""}</h6>
+              <h6></h6>
+            </div>
+            
+            <div>
+              <h6>Min Investment: {round ? round.minContibution / 10e17 : ""}</h6>
               <h6></h6>
             </div>
             <div>
-              <h6>Minimum Investment: {round ? round.minContibution / 10e17 : ""}</h6>
-              <h6></h6>
-            </div>
-            <div>
-              <h6>Maximum Investment: {round ? round.maxContibution / 10e17 : ""}</h6>
+              <h6>Max Investment: {round ? round.maxContibution / 10e17 : ""}</h6>
               <h6></h6>
             </div>
 
