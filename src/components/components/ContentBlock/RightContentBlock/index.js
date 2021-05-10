@@ -93,7 +93,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
   }, []);
-  console.log("this roundRate", roundRate)
+  // console.log("this roundRate", roundRate)
   const onSubmit = async () => {
 
     let etherToWei = etherValue * 10e17;
@@ -163,8 +163,8 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           <div> </div>
         ) : (
             <>
-              {/* <p> 1ETH = 200,000 FYNX</p>  
-     <h6> GHC = {(web3.utils.fromWei(weiValue, "wei")/5000000000000)} </h6>   */}
+              <p> 1ETH = {roundRate*10e17}</p>  
+     <h6> GHC = {(web3.utils.fromWei(weiValue, "wei"))} </h6>  
             </>
           )}
         <br />
