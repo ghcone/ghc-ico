@@ -93,7 +93,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
   }, []);
-  console.log("this weiValueweiValue", weiValue)
+  console.log("this roundRate", roundRate)
   const onSubmit = async () => {
 
     let etherToWei = etherValue * 10e17;
