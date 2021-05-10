@@ -1,4 +1,4 @@
-import { setupWeb3, getRound, setupContract, setupToken, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, getRound,getRoundNumber, setupContract, setupToken, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
 import { GHC_ADDRESS, GHC_ABI } from '../contract/ghc';
 
@@ -66,8 +66,11 @@ export const getRoundAsync = async (contract, dispatch) => {
     // var etherAmount = web3.toBigNumber("70000");
     const currecntRound = await contract.methods
         .currentRound().call();
+        dispatch(getRoundNumber(currecntRound));
+
         const rounds = await contract.methods
         .rounds(currecntRound).call();
+
     console.log("after weiRaisedAsync  Round ", rounds);
     dispatch(getRound(rounds));
     // dispatch(addTransaction(transaction));

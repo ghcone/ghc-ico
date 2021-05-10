@@ -11,6 +11,7 @@ const initialState = {
   round: null,
   tokencontract: null,
   web3LoadingErrorMessage:"",
+  roundNumber: null,
   web3Loadded: false
 }
 

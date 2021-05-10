@@ -32,6 +32,11 @@ export default (state, action) => {
             ...state,
             tokencontract: action.payload
           }
+          case 'ROUND_NUMBER':
+          return {
+            ...state,
+            roundNumber: action.payload
+          }
       case 'ADD_ETHEREUM_ACCOUNTS':
         return {
           ...state,

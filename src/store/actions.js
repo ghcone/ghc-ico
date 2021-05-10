@@ -45,12 +45,19 @@ export const getRound = (receipt) => {
         payload: receipt
     };
 }
+export const getRoundNumber = (receipt) => {
+    return {
+        type: 'ROUND_NUMBER',
+        payload: receipt
+    };
+}
 export const addEthereumAccounts = (accounts) => {
     return {
         type: 'ADD_ETHEREUM_ACCOUNTS',
         payload: accounts
     };
 }
+
 
 export const web3LoadingError = (errorMessage) => {
     return {

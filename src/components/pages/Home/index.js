@@ -14,6 +14,7 @@ const ContactFrom = lazy(() => import("../../components/ContactForm"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
 const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
 const DisclaimerBlock = lazy(() => import("../../components/DisclaimerBlock"));
+const RoundDetails = lazy(() => import("../../components/RoundDetails"));
 
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
@@ -54,7 +55,12 @@ const Home = () => {
         icon="waving.svg"
         id="product"
       />
-        <DisclaimerBlock
+         <DisclaimerBlock
+        title={DisclaimerBlockContent.title}
+        content={DisclaimerBlockContent.text}
+        button={DisclaimerBlockContent.button}
+      /> 
+        <RoundDetails
         title={DisclaimerBlockContent.title}
         content={DisclaimerBlockContent.text}
         button={DisclaimerBlockContent.button}
