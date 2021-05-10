@@ -34,7 +34,11 @@ const Home = () => {
         id="intro"
       />
 
-
+   <RoundDetails
+        title={DisclaimerBlockContent.title}
+        content={DisclaimerBlockContent.text}
+        button={DisclaimerBlockContent.button}
+      />
       <MiddleBlock
         title={MiddleBlockContent.title}
         content={MiddleBlockContent.text}
@@ -55,11 +59,7 @@ const Home = () => {
         icon="waving.svg"
         id="product"
       />
-      <RoundDetails
-        title={DisclaimerBlockContent.title}
-        content={DisclaimerBlockContent.text}
-        button={DisclaimerBlockContent.button}
-      />
+   
       <DisclaimerBlock
         title={DisclaimerBlockContent.title}
         content={DisclaimerBlockContent.text}

@@ -82,9 +82,9 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
       alert("big Number")
     }
     else if (etherValue < 10e19) {
-      let etherToWei = etherValue * 10e17;
+      let etherToWei = etherValue * 1;
 
-      let stringEtherToWei = ((roundRate / 10 ** 10) * etherToWei).toString();
+      let stringEtherToWei = (roundRate * etherToWei).toString();
       setWeiValue(stringEtherToWei);
     }
 
@@ -163,8 +163,8 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           <div> </div>
         ) : (
             <>
-              <p> 1ETH = {roundRate*10e17}</p>  
-     <h6> GHC = {(web3.utils.fromWei(weiValue, "wei"))} </h6>  
+              <p> 1ETH = {roundRate*1}</p>  
+     <h6> GHC = {weiValue} </h6>  
             </>
           )}
         <br />
