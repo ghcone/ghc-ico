@@ -39,11 +39,11 @@ const Home = () => {
         content={DisclaimerBlockContent.text}
         button={DisclaimerBlockContent.button}
       />
-      <MiddleBlock
+      {/* <MiddleBlock
         title={MiddleBlockContent.title}
         content={MiddleBlockContent.text}
         button={MiddleBlockContent.button}
-      />
+      /> */}
       {/* <ContentBlock
         type="right"
         title={MissionContent.title}
