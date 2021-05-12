@@ -192,7 +192,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           style={{ marginTop: '20px' }}
         >
           {/* {t(item.title)} */}
-          BUY GHC
+          EXCHANGE GHC
                 </Button>
         {/* );
             })}
@@ -216,7 +216,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
                   web3 == null ?
                     <Button onClick={sendRequest}>Unlock Wallet</Button>
                     :
-                    <Button onClick={handleOpen}>BUY GHC</Button>
+                    <Button onClick={handleOpen}>EXCHANGE GHC</Button>
 
                 }
 
