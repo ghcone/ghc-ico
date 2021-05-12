@@ -36,11 +36,11 @@ const RoundDetails = ({ title, content, button, t }) => {
             </div>
 
             <div>
-              <h6>Minimum Investment: {round ? round.minContibution / 10e17 : ""}</h6>
+              <h6>Minimum Investment: {round ? round.minContibution / 10e17 : ""} ETH</h6>
               <h6></h6>
             </div>
             <div>
-              <h6>Maximum Investment: {round ? round.maxContibution / 10e17 : ""}</h6>
+              <h6>Maximum Investment: {round ? round.maxContibution / 10e17 : ""} ETH</h6>
               <h6></h6>
             </div>
 
