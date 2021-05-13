@@ -31,11 +31,12 @@ console.log("This is all inclusive round",round);
               <h6></h6>
             </div>
             <div>
-              <h6>Funding Target: {round ? (round.raised / 10e17).toFixed(2) : ""} ETH</h6>
+           
+              <h6>Funding Target: {round ? (round.roundCap / 10e17).toFixed(2) : ""} ETH</h6>
               <h6></h6>
             </div>
             <div>
-              <h6>Round Cap: {round ? (round.roundCap / 10e17).toFixed(2) : ""} ETH</h6>
+              <h6>Amount raised:  {round ? (round.raised / 10e17).toFixed(2) : ""} ETH</h6>
               <h6></h6>
             </div>
 

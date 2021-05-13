@@ -96,6 +96,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
   }, [etherValue])
 
+
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
 
@@ -159,6 +160,18 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const startTimer = async () => {
     if (web3 != null && accounts[0] != undefined) {
       let account = accounts[0].toString();
+      if (etherValue < 1 ) {
+        setDisable(true)
+      }
+      else if(etherValue > 10){
+        setDisable(true)
+      }
+
+      else{
+        setDisable(false)
+
+      }
+ 
       let lower = account.toLowerCase()
       const balance = await web3.eth.getBalance(lower);
       setAccountBalance(balance)
