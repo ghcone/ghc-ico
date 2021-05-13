@@ -55,7 +55,7 @@ const Header = ({t}) => {
               href="https://ghc.one/"
               target="_blank"
             >
-              {t("About")}
+              {t("GHC.one")}
             </a>
           </S.Span>
         </S.CustomNavLinkSmall>
