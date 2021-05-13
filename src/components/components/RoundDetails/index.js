@@ -30,8 +30,9 @@ const RoundDetails = ({ title, content, button, t }) => {
               <h2 style={{ color: "#38aea0", fontSize: "60px" }}> Round {roundNumber ? roundNumber : ""} Details</h2>
               <h6></h6>
             </div>
+            
             <div>
-              <h6>Raised: {round ? (round.roundCap / 10e17).toFixed(2) : ""} ETH</h6>
+              <h6>Round Cap: {round ? (round.roundCap / 10e17).toFixed(2) : ""} ETH</h6>
               <h6></h6>
             </div>
 
