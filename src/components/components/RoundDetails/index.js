@@ -12,7 +12,7 @@ import './style.modules.css';
 const Button = lazy(() => import("../../common/Button"));
 
 const RoundDetails = ({ title, content, button, t }) => {
-  const [roundRate, setRoundRate] = useState()
+  const [amountReached, setamountReached] = useState()
   const [{ web3, contract, accounts, round, roundNumber }, dispatch] = useStore();
 
   const scrollTo = (id) => {
