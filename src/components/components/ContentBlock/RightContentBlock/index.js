@@ -2,7 +2,7 @@ import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import Slide from "react-reveal/Slide";
 import { useStore } from "../../../../context/GlobalState";
-import React, { useState, useEffect, Fragment, useCallback,useRef } from "react";
+import React, { useState, useEffect, Fragment, useCallback, useRef } from "react";
 import SvgIcon from "../../../common/SvgIcon";
 import Button from "../../../common/Button";
 import { buyTokensAsync, loadBlockchain } from "../../../../store/asyncActions";
@@ -76,12 +76,12 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   useEffect(() => {
     if (round != null) {
       setRoundRate(round.rate)
-      setRoundStop(round.stopTime*1000)
-      
+      setRoundStop(round.stopTime * 1000)
+
     }
   }, [round])
 
-  
+
 
   useEffect(() => {
     if (etherValue >= 10e20) {
@@ -98,7 +98,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
-    
+
   }, []);
   // console.log("this roundRate", roundRate)
   const onSubmit = async () => {
@@ -106,7 +106,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     let etherToWei = etherValue * 10e17;
     let stringEtherToWei = etherToWei.toString();
     try {
-      function notify (){
+      function notify() {
 
         toast.success('Transaction succeed!', {
           position: "top-right",
@@ -116,8 +116,8 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
-        }
+        });
+      }
       await buyTokensAsync(account, accounts, contract, stringEtherToWei, dispatch);
       setDisable(false)
 
@@ -125,7 +125,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     } catch (error) {
       setDisable(false)
 
-      function notify (){
+      function notify() {
 
         toast.error("Transaction failed!", {
           position: "top-right",
@@ -135,9 +135,9 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
-        }
-        notify()
+        });
+      }
+      notify()
 
       console.log("error trax = ", error);
     }
@@ -156,41 +156,41 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
 
 
-  const startTimer = async() => {
-    if(web3 != null&& accounts[0] != undefined) {
-    let account = accounts[0].toString();
-    let lower = account.toLowerCase()
+  const startTimer = async () => {
+    if (web3 != null && accounts[0] != undefined) {
+      let account = accounts[0].toString();
+      let lower = account.toLowerCase()
       const balance = await web3.eth.getBalance(lower);
-    setAccountBalance(balance)
+      setAccountBalance(balance)
     }
-    
+
     if (round != null) {
 
-    interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = roundStop - now;
+      interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = roundStop - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      if (distance < 0) {
-        clearInterval(interval.current);
-      } else {
-        setTimerDays(days);
-        setTimerHours(hours);
-        setTimerMinutes(minutes);
-        setTimerSeconds(seconds);
-      }
-    }, 1000);
-  }
+        if (distance < 0) {
+          clearInterval(interval.current);
+        } else {
+          setTimerDays(days);
+          setTimerHours(hours);
+          setTimerMinutes(minutes);
+          setTimerSeconds(seconds);
+        }
+      }, 1000);
+    }
   };
 
   useEffect(() => {
-    
+
     startTimer();
     return () => {
       clearInterval(interval.current);
@@ -201,15 +201,15 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <div style={{ textAlign: 'center' }}>
-      <p>Balance: {(accountBalance/10e17).toFixed(3)} ETH</p>
+        <p>Balance: {(accountBalance / 10e17).toFixed(3)} ETH</p>
         {/* <h2 id="simple-modal-title">Buy Fynx Token</h2> */}
         <br />
         {web3 == null ? (
           ""
         ) : (
             <>
-              <h6> 1ETH = {roundRate*1}</h6>  
-     <h6> GHC = {weiValue} </h6>  
+              <h6> 1ETH = {roundRate * 1}</h6>
+              <h6> GHC = {weiValue} </h6>
             </>
           )}
         <br />
@@ -232,8 +232,8 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
               return ( */}
         <Button
           width="true"
-        
-          color={  disable == false? "#38aea0": "#158f80"}
+
+          color={disable == false ? "#38aea0" : "#158f80"}
           // onClick={() => scrollTo("about")}
           onClick={onSubmit}
           style={{ marginTop: '20px' }}
@@ -255,7 +255,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
       <S.RightBlockContainer>
         <Row type="flex" justify="space-between" align="middle" id={id}>
-        <ToastContainer />
+          <ToastContainer />
           <Col lg={11} md={11} sm={11} xs={24}>
             <Slide left>
               <S.ContentWrapper>
@@ -294,40 +294,40 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
       </S.RightBlockContainer>
       <h3 className="timer-flex" style={{ marginBottom: "-50px" }}>Time Left</h3>
       <>
-      <div className="display-timer">
-        <div className="timer-flex">
-          <div className="d-two">
-            <span className="timer-num one">
-              <b>{timerDays} </b>
-            </span>
-            <span className="timer-text one1">days</span>
-          </div>
-          <div className="">
-            <span className="timer-num ">
-              {" "}
-              <b>{timerHours}</b>
-            </span>
-            <span className="timer-text">hours</span>
-          </div>
-          <div className="">
-            <span className="timer-num two">
-              <b>{timerMinutes}</b>
-            </span>
-            <span className="timer-text two2">minutes</span>
-          </div>
-          <div className="">
-            <span className="timer-num two">
-              {" "}
-              <b>{timerSeconds}</b>
-            </span>
-            <span className="timer-text two2">seconds</span>
+        <div className="display-timer">
+          <div className="timer-flex">
+            <div className="d-two">
+              <span className="timer-num one">
+                <b>{timerDays} </b>
+              </span>
+              <span className="timer-text one1">days</span>
+            </div>
+            <div className="">
+              <span className="timer-num ">
+                {" "}
+                <b>{timerHours}</b>
+              </span>
+              <span className="timer-text">hours</span>
+            </div>
+            <div className="">
+              <span className="timer-num two">
+                <b>{timerMinutes}</b>
+              </span>
+              <span className="timer-text two2">minutes</span>
+            </div>
+            <div className="">
+              <span className="timer-num two">
+                {" "}
+                <b>{timerSeconds}</b>
+              </span>
+              <span className="timer-text two2">seconds</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="btn-div"></div>
-      
-    </>
+        <div className="btn-div"></div>
+
+      </>
 
     </div>
   );
