@@ -16,6 +16,8 @@ import "../../../../css/modal.modules.css";
 import Timer from '../../Timer/Timer'
 import './index.css'
 import logo from "../../../images/logo1.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Web3 from "web3";
 
 
@@ -33,7 +35,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 400,
+    width: 440,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -60,6 +62,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const [weiValue, setWeiValue] = React.useState("");
   const [roundRate, setRoundRate] = useState("")
   const [roundStop, setRoundStop] = useState(0);
+  const [accountBalance, setAccountBalance] = useState(0)
 
   //for time
   const [timerDays, setTimerDays] = useState("00");
@@ -72,6 +75,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     if (round != null) {
       setRoundRate(round.rate)
       setRoundStop(round.stopTime*1000)
+      
     }
   }, [round])
 
@@ -92,6 +96,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
   const sendRequest = useCallback(async () => {
     loadBlockchain(dispatch);
+    
   }, []);
   // console.log("this roundRate", roundRate)
   const onSubmit = async () => {
@@ -99,8 +104,36 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     let etherToWei = etherValue * 10e17;
     let stringEtherToWei = etherToWei.toString();
     try {
+      function notify (){
+
+        toast.success('Transaction succeed!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+        }
       await buyTokensAsync(account, accounts, contract, stringEtherToWei, dispatch);
+     
+      notify()
     } catch (error) {
+      function notify (){
+
+        toast.error("Transaction failed!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+        }
+        notify()
+
       console.log("error trax = ", error);
     }
   };
@@ -118,8 +151,14 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
 
 
-  const startTimer = () => {
-
+  const startTimer = async() => {
+    if(web3 != null&& accounts[0] != undefined) {
+    let account = accounts[0].toString();
+    let lower = account.toLowerCase()
+      const balance = await web3.eth.getBalance(lower);
+    setAccountBalance(balance)
+    }
+    
     if (round != null) {
 
     interval = setInterval(() => {
@@ -153,17 +192,18 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     };
   });
 
-  console.log("this is web3", web3);
+  // console.log("this is web3", web3);
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <div style={{ textAlign: 'center' }}>
+      <p>Balance: {(accountBalance/10e17).toFixed(3)} ETH</p>
         {/* <h2 id="simple-modal-title">Buy Fynx Token</h2> */}
         <br />
         {web3 == null ? (
-          <div> </div>
+          ""
         ) : (
             <>
-              <p> 1ETH = {roundRate*1}</p>  
+              <h6> 1ETH = {roundRate*1}</h6>  
      <h6> GHC = {weiValue} </h6>  
             </>
           )}
@@ -207,6 +247,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
 
       <S.RightBlockContainer>
         <Row type="flex" justify="space-between" align="middle" id={id}>
+        <ToastContainer />
           <Col lg={11} md={11} sm={11} xs={24}>
             <Slide left>
               <S.ContentWrapper>

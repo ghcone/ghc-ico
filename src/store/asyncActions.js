@@ -22,6 +22,8 @@ export const loadBlockchain = async (dispatch) => {
 
             dispatch(setupContract(contract));
             const accounts = await web3.eth.getAccounts();
+           const balance = await web3.eth.getBalance(accounts[0]);
+           console.log("balance balance",balance)
             dispatch(addEthereumAccounts(accounts));
             console.log("contract = ", tokencontract);
             console.log("contract.methods = ", contract.methods);
