@@ -58,6 +58,8 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const [modalStyle] = React.useState(getModalStyle);
   const [roundData, setRoundData] = useState()
   const [open, setOpen] = React.useState(false);
+  const [disable, setDisable] = React.useState(false);
+
   const [etherValue, setEtherValue] = React.useState("0");
   const [weiValue, setWeiValue] = React.useState("");
   const [roundRate, setRoundRate] = useState("")
@@ -100,7 +102,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   }, []);
   // console.log("this roundRate", roundRate)
   const onSubmit = async () => {
-
+    setDisable(true)
     let etherToWei = etherValue * 10e17;
     let stringEtherToWei = etherToWei.toString();
     try {
@@ -117,9 +119,12 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           });
         }
       await buyTokensAsync(account, accounts, contract, stringEtherToWei, dispatch);
-     
+      setDisable(false)
+
       notify()
     } catch (error) {
+      setDisable(false)
+
       function notify (){
 
         toast.error("Transaction failed!", {
@@ -227,9 +232,12 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
               return ( */}
         <Button
           width="true"
+        
+          color={  disable == false? "#38aea0": "#158f80"}
           // onClick={() => scrollTo("about")}
           onClick={onSubmit}
           style={{ marginTop: '20px' }}
+          bools={disable}
         >
           {/* {t(item.title)} */}
           EXCHANGE GHC
