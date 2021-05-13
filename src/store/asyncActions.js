@@ -70,10 +70,22 @@ export const getRoundAsync = async (contract, dispatch) => {
         .currentRound().call();
         dispatch(getRoundNumber(currecntRound));
 
-        const rounds = await contract.methods
+        let rounds = await contract.methods
         .rounds(currecntRound).call();
+        const raised =await contract.methods
+        .roundDetails(currecntRound).call();
+        rounds.raised=raised;
+        let round={
+startTime:rounds.startTime,
+stopTime:rounds.stopTime,
+duration:rounds.duration,
+roundCap:rounds.roundCap,
+rate:rounds.rate,
+raised:raised
 
-    console.log("after weiRaisedAsync  Round ", rounds);
+        }
+
+    console.log("after weiRaisedAsync  Round ",round);
     dispatch(getRound(rounds));
     // dispatch(addTransaction(transaction));
     return rounds

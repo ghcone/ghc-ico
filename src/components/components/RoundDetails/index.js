@@ -14,7 +14,7 @@ const Button = lazy(() => import("../../common/Button"));
 const RoundDetails = ({ title, content, button, t }) => {
   const [amountReached, setamountReached] = useState()
   const [{ web3, contract, accounts, round, roundNumber }, dispatch] = useStore();
-
+console.log("This is all inclusive round",round);
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     element.scrollIntoView({
