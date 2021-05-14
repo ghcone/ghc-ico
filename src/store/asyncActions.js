@@ -71,12 +71,11 @@ export const tokenLeftAsync = async (contract) => {
 export const updateGHCBalance = async (tokenContract,accounts,dispatch) => {
     
     if(tokenContract&&accounts){
-    const balance=  await tokenContract.methods
+    let balance=  await tokenContract.methods
         .balanceOf(accounts[0]).call();
-
     console.log("afterGHC Balance", balance);
      dispatch(updateTokenBalance(balance));
-    return balance
+    return balance;
 }
 }
 export const getRoundAsync = async (contract, dispatch) => {

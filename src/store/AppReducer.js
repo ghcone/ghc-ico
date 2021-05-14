@@ -32,7 +32,7 @@ export default (state, action) => {
             ...state,
             tokencontract: action.payload
           }
-          case 'UPDATE_BALANCE':
+          case 'UPDATE_TOKEN_BALANCE':
           return {
             ...state,
             GHCBalance: action.payload
