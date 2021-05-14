@@ -2,7 +2,7 @@ import { lazy } from "react";
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import Fade from "react-reveal/Fade";
-
+import {useStore } from '../../../context/GlobalState';
 import sectionImage from '../../images/ghc-section.png'
 import * as S from "./styles";
 import './style.modules.css';
@@ -10,6 +10,8 @@ import './style.modules.css';
 const Button = lazy(() => import("../../common/Button"));
 
 const MiddleBlock = ({ title, content, button, t }) => {
+  const [{GHCBalance},dispatch] = useStore();
+  console.log("This is GHC Balance",GHCBalance);
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     element.scrollIntoView({
