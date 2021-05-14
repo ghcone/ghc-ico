@@ -1,6 +1,7 @@
-import { setupWeb3, getRound,getRoundNumber, setupContract, setupToken, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
+import { setupWeb3, getRound,getRoundNumber,updateTokenBalance, setupContract, setupToken, addEthereumAccounts, addTransaction, web3LoadingError } from "./actions";
 import Web3 from "web3";
 import { GHC_ADDRESS, GHC_ABI } from '../contract/ghc';
+import { GHC_TOKEN_ADDRESS, GHC_TOKEN_ABI } from '../contract/ghcToken';
 
 export const loadBlockchain = async (dispatch) => {
     try {
@@ -18,6 +19,9 @@ export const loadBlockchain = async (dispatch) => {
             const tokencontract = new web3.eth.Contract(
                 GHC_ABI, GHC_ADDRESS
             );
+            const ghTokencontract = new web3.eth.Contract(
+                 GHC_TOKEN_ABI,GHC_TOKEN_ADDRESS
+            );
             dispatch(setupToken(tokencontract));
 
             dispatch(setupContract(contract));
@@ -28,7 +32,8 @@ export const loadBlockchain = async (dispatch) => {
             console.log("contract = ", tokencontract);
             console.log("contract.methods = ", contract.methods);
 
-            tokenLeftAsync(tokencontract)
+            tokenLeftAsync(tokencontract);
+            updateGHCBalance(ghTokencontract,accounts,dispatch);
         }
         else {
             dispatch(web3LoadingError("Please install an Ethereum-compatible browser or extension like MetaMask to use this dApp!"))
@@ -63,7 +68,17 @@ export const tokenLeftAsync = async (contract) => {
     return receipt
 
 }
+export const updateGHCBalance = async (tokenContract,accounts,dispatch) => {
+    
+    if(tokenContract&&accounts){
+    const balance=  await tokenContract.methods
+        .balanceOf(accounts[0]).call();
 
+    console.log("afterGHC Balance", balance);
+     dispatch(updateTokenBalance(balance));
+    return balance
+}
+}
 export const getRoundAsync = async (contract, dispatch) => {
     // var etherAmount = web3.toBigNumber("70000");
     const currecntRound = await contract.methods

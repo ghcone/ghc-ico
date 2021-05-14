@@ -51,6 +51,12 @@ export const getRoundNumber = (receipt) => {
         payload: receipt
     };
 }
+export const updateTokenBalance = (balance) => {
+    return {
+        type: 'UPDATE_TOKEN_BALANCE',
+        payload: balance
+    };
+}
 export const addEthereumAccounts = (accounts) => {
     return {
         type: 'ADD_ETHEREUM_ACCOUNTS',

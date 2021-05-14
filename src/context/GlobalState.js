@@ -8,6 +8,7 @@ const initialState = {
   web3: null,
   accounts: [],
   contract: null,
+  GHCBalance:0,
   round: null,
   tokencontract: null,
   web3LoadingErrorMessage:"",
