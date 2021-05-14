@@ -1,4 +1,4 @@
-export const GHC_ADDRESS = "0x3E787ECA9dC6083f407eA704cf541721AA4B9742"
+export const GHC_ADDRESS = "0xDa9f13722fef7a6357944622F583285Da14c90A5"
 export const GHC_ABI = [
 	{
 		"constant": false,

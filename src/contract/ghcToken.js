@@ -1,4 +1,4 @@
-export const GHC_TOKEN_ADDRESS = "0x505745Bf5620fc312eA9e8dd2F9542401f557E9F"
+export const GHC_TOKEN_ADDRESS = "0xaD584f8B2d721aDbd28F587274aa4EBE488b3Ba8"
 export const GHC_TOKEN_ABI = [
 	{
 		"inputs": [],
