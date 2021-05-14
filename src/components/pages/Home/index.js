@@ -9,6 +9,7 @@ import MissionContent from "../../content/MissionContent.json";
 import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
 import AMX from '../../components/ContentBlock/RightContentBlock/AMX.png'
+import { useStore } from "../../../context/GlobalState";
 
 const ContactFrom = lazy(() => import("../../components/ContactForm"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
@@ -21,6 +22,8 @@ const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
 
 const Home = () => {
+  const [{ web3, contract, accounts, round, roundNumber }, dispatch] = useStore();
+
   return (
     <Container>
       {/* <ScrollToTop /> */}
@@ -33,12 +36,15 @@ const Home = () => {
         icon="developer.svg"
         id="intro"
       />
+    {
+      web3 ? 
+      <RoundDetails
+      title={DisclaimerBlockContent.title}
+      content={DisclaimerBlockContent.text}
+      button={DisclaimerBlockContent.button}
+    />: ""
+    }
 
-   <RoundDetails
-        title={DisclaimerBlockContent.title}
-        content={DisclaimerBlockContent.text}
-        button={DisclaimerBlockContent.button}
-      />
       {/* <MiddleBlock
         title={MiddleBlockContent.title}
         content={MiddleBlockContent.text}
