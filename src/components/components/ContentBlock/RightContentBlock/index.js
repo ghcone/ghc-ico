@@ -51,7 +51,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     });
   };
 
-  const [{ web3, contract, accounts, round }, dispatch] = useStore();
+  const [{ web3, contract, accounts, round,GHCBalance }, dispatch] = useStore();
   const account = accounts[0];
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -215,6 +215,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     <div style={modalStyle} className={classes.paper}>
       <div style={{ textAlign: 'center' }}>
         <p>Balance: {(accountBalance / 10e17).toFixed(3)} ETH</p>
+        <p style={{marginTop: "-20px"}}>Balance: {GHCBalance ? (GHCBalance / 10e7).toFixed(3) : 0} GHC</p>
         {/* <h2 id="simple-modal-title">Buy Fynx Token</h2> */}
         <br />
         {web3 == null ? (
