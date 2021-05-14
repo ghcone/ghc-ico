@@ -33,7 +33,7 @@ console.log("This is GHC Balance",GHCBalance);
             </div>
             <div>
            
-              <h6>Funding Target: {round ? (round.roundCap / 10e17).toFixed(2) : ""} ETH</h6>
+              <h6>Round Cap: {round ? (round.roundCap / 10e17).toFixed(2) : ""} ETH</h6>
               <h6></h6>
             </div>
             <div>

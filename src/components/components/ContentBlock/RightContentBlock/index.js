@@ -273,7 +273,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           <Col lg={11} md={11} sm={11} xs={24}>
             <Slide left>
               <S.ContentWrapper>
-                <h6 style={{ color: "#38aea0" }}>{t(title)}</h6>
+                <h6 style={{ color: "#38aea0", fontWeight: "700" }}>{t(title)}</h6>
                 <S.Content>{t(content)}</S.Content>
                 {
                   web3 == null ?
