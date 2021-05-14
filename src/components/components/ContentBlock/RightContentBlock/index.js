@@ -306,7 +306,10 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           </Col>
         </Row>
       </S.RightBlockContainer>
-      <h3 className="timer-flex" style={{ marginBottom: "-50px" }}>Time Left</h3>
+      {
+        web3 ?
+<>
+<h3 className="timer-flex" style={{ marginBottom: "-50px" }}>Time Left</h3>
       <>
         <div className="display-timer">
           <div className="timer-flex">
@@ -342,6 +345,9 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
         <div className="btn-div"></div>
 
       </>
+</> : ""
+      }
+    
 
     </div>
   );
