@@ -1,0 +1,2 @@
+export const GHC_ADDRESS = "0x505745Bf5620fc312eA9e8dd2F9542401f557E9F"
+export const GHC_TOKEB_ABI = []
