@@ -160,7 +160,7 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
   const startTimer = async () => {
     if (web3 != null && accounts[0] != undefined) {
       let account = accounts[0].toString();
-      if (etherValue < 1 ) {
+      if (etherValue < 0.5 ) {
         setDisable(true)
       }
       else if(etherValue > 10){
